@@ -41,7 +41,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'intheam = taskwarrior_inthe_am'
+            'intheam = taskwarrior_inthe_am.cmdline:main'
         ],
     },
 )
