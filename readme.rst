@@ -8,13 +8,17 @@ Installation
 
 Using pip::
 
-   pip install taskwarrior-inthe.am
+    pip install taskwarrior-inthe.am
 
 If you do not have ``pip`` installed, follow
 `these instructions <https://pip.pypa.io/en/latest/installing.html#install-pip>`_.
 
 Commands
 --------
+
+To run any of the below commands from the command-line, run::
+
+    intheam <COMMAND>
 
 ``setup``
 ~~~~~~~~~
