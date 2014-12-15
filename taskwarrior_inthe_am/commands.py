@@ -66,7 +66,7 @@ def setup(config, args, *extra, **kwargs):
     twversion = TaskWarriorShellout.get_version()
     if twversion < LooseVersion('2.3'):
         raise IncompatibleVersionError(
-            "Only TaskWarrior versions 2.3 and above supports "
+            "Only Taskwarrior versions 2.3 and above support "
             "synchronization with a task server.  Please upgrade "
             "and try again."
         )
