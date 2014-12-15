@@ -1,0 +1,4 @@
+six
+configobj==5.0.6
+argparse==1.2.1
+requests==2.5.0
