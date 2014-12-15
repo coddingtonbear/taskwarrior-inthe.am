@@ -3,6 +3,13 @@ Taskwarrior Inthe.AM Utility
 
 Utilities to make using Inthe.AM with Taskwarrior just a little easier.
 
+Installation
+------------
+
+Using pip::
+
+   pip install taskwarrior-inthe.am
+
 Commands
 --------
 
