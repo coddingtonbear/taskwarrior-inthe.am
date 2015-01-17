@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+import uuid
 
 from taskwarrior_inthe_am import __version__ as version_string
 
@@ -11,7 +12,10 @@ requirements_path = os.path.join(
 try:
     from pip.req import parse_requirements
     requirements = [
-        str(req.req) for req in parse_requirements(requirements_path)
+        str(req.req) for req in parse_requirements(
+            requirements_path,
+            session=uuid.uuid1()
+        )
     ]
 except ImportError:
     requirements = []
