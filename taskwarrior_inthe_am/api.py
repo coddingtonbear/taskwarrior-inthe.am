@@ -1,10 +1,14 @@
 import getpass
+import logging
 
 import keyring
 import requests
 from six.moves import input
 
 from .exceptions import ConfigurationError
+
+
+logger = logging.getLogger(__name__)
 
 
 def response_was_yes(response):
@@ -14,10 +18,20 @@ def response_was_yes(response):
 
 
 def get_api_connection(config, interactive=True):
-    api_key = keyring.get_password(
+    old_api_key = keyring.get_password(
         'taskwarrior_inthe.am',
         'api_key',
     )
+    api_key = keyring.get_password(
+        'taskwarrior_inthe.am',
+        'api_v2_key',
+    )
+    if old_api_key and not api_key:
+        logger.warning(
+            "You currently have an Api Key stored for an earlier version "
+            "of Inthe.AM.  Please go to your control panel to find out "
+            "what your new API key is.",
+        )
     if not api_key:
         if interactive:
             api_key = getpass.getpass(
@@ -31,7 +45,7 @@ def get_api_connection(config, interactive=True):
             if response_was_yes(save_to_keyring):
                 keyring.set_password(
                     'taskwarrior_inthe.am',
-                    'api_key',
+                    'api_v2_key',
                     api_key
                 )
         else:
@@ -41,7 +55,7 @@ def get_api_connection(config, interactive=True):
 
     s = requests.Session()
     s.headers.update({
-        'Authorization': 'ApiKey %s' % api_key.encode('ascii')
+        'Authorization': 'Token %s' % api_key.encode('ascii')
     })
     s.headers['User-Agent'] = ' '.join(
         [
