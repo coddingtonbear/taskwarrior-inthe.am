@@ -184,3 +184,12 @@ def clear_passwords(config, args, *extra, **kwargs):
         'taskwarrior_inthe.am',
         'api_v2_key',
     )
+
+
+@command('Sync tasks with bugwarrior.')
+def sync_bugwarrior(config, args, *extra, **kwargs):
+    api = get_api_connection(config)
+    result = api.post('https://inthe.am/api/v2/task/bugwarrior/sync/')
+    result.raise_for_status()
+
+    logger.info("Synchronization with bugwarrior has been queued.")
