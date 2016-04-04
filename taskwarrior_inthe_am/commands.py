@@ -104,13 +104,13 @@ def setup(config, args, *extra, **kwargs):
         )
 
     # Get user information
-    status = api.get('https://inthe.am/api/v1/user/status/').json()
+    status = api.get('https://inthe.am/api/v2/user/status/').json()
 
     # Write certificate files
     files = {
-        'private.cert': '/api/v1/user/my-certificate/',
-        'private.key': '/api/v1/user/my-key/',
-        'ca.cert.pem': '/api/v1/user/ca-certificate/',
+        'private.cert': '/api/v2/user/my-certificate/',
+        'private.key': '/api/v2/user/my-key/',
+        'ca.cert.pem': '/api/v2/user/ca-certificate/',
     }
     for filename, url in files.items():
         full_path = os.path.join(data_location, filename)
