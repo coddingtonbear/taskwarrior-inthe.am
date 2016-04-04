@@ -180,3 +180,7 @@ def clear_passwords(config, args, *extra, **kwargs):
         'taskwarrior_inthe.am',
         'api_key',
     )
+    keyring.delete_password(
+        'taskwarrior_inthe.am',
+        'api_v2_key',
+    )
