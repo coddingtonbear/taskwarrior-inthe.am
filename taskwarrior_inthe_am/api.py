@@ -64,7 +64,7 @@ def get_api_connection(config, interactive=True):
         ]
     )
 
-    status = s.get('https://inthe.am/api/v1/user/status/').json()
+    status = s.get('https://inthe.am/api/v2/user/status/').json()
     if status['logged_in'] is False:
         raise ConfigurationError(
             "The supplied API key is invalid."
