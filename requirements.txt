@@ -1,6 +1,6 @@
 six
-configobj==5.0.6
-argparse==1.2.1
-requests==2.5.0
-keyring>=4.0
+configobj>=5.0.6,<6
+argparse>=1.2.1,<2
+requests>=2.5.0,<3
+keyring>=4.0,<5
 taskw==0.8.6
