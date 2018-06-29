@@ -55,7 +55,7 @@ def get_api_connection(config, interactive=True):
 
     s = requests.Session()
     s.headers.update({
-        'Authorization': 'Token %s' % api_key.encode('ascii')
+        'Authorization': 'Token {}'.format(api_key)
     })
     s.headers['User-Agent'] = ' '.join(
         [
@@ -65,7 +65,7 @@ def get_api_connection(config, interactive=True):
     )
 
     status = s.get('https://inthe.am/api/v2/user/status/').json()
-    if status['logged_in'] is False:
+    if not status.get('logged_in'):
         raise ConfigurationError(
             "The supplied API key is invalid."
         )

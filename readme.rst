@@ -30,6 +30,11 @@ Run this command if you'd like to configure your local installation of Taskwarri
 
 Clear your saved API key from your keychain.
 
+``sync_bugwarrior``
+~~~~~~~~~~~~~~~~~~~
+
+Ask Inthe.AM to synchronize your task list with Bugwarrior.
+
 Getting your API Key
 --------------------
 
