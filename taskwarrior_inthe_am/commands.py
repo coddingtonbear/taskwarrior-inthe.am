@@ -1,4 +1,5 @@
 import argparse
+import codecs
 from distutils.version import LooseVersion
 import logging
 import os
@@ -114,7 +115,7 @@ def setup(config, args, *extra, **kwargs):
     }
     for filename, url in files.items():
         full_path = os.path.join(data_location, filename)
-        with open(full_path, 'w') as out:
+        with codecs.open(full_path, 'w', encoding='utf-8') as out:
             full_url = 'https://inthe.am%s' % url
             content = api.get(full_url).content
             out.write(content)
@@ -126,7 +127,7 @@ def setup(config, args, *extra, **kwargs):
 
     # Write configuration
     taskrc_path = os.path.expanduser(args.taskrc)
-    with open(taskrc_path, 'a') as out:
+    with codecs.open(taskrc_path, 'a', encoding='utf-8') as out:
         lines = []
         if twconfig.get('data', {}).get('location') is None:
             lines.append(
